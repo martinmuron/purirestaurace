@@ -37,7 +37,19 @@ export function ComingSoon({ locale, dictionary }: Props) {
         <p className="stage__eyebrow reveal reveal--3">{dictionary.comingSoon}</p>
         <p className="stage__tagline reveal reveal--4">{dictionary.tagline}</p>
 
-        <address className="stage__address reveal reveal--5">
+        <a
+          className="stage__menu reveal reveal--5"
+          href="/puri-menu-cz.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={dictionary.menuAriaLabel}
+        >
+          <span className="stage__menu-label">{dictionary.menuLabel}</span>
+          <strong className="stage__menu-action">{dictionary.menuAction}</strong>
+          <span className="stage__menu-meta">{dictionary.menuMeta}</span>
+        </a>
+
+        <address className="stage__address reveal reveal--6">
           <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
             {dictionary.addressLines.map((line) => (
               <span key={line}>{line}</span>
@@ -45,7 +57,7 @@ export function ComingSoon({ locale, dictionary }: Props) {
           </a>
         </address>
 
-        <a className="stage__email reveal reveal--6" href={`mailto:${EMAIL}`}>
+        <a className="stage__email reveal reveal--7" href={`mailto:${EMAIL}`}>
           {EMAIL}
         </a>
       </div>

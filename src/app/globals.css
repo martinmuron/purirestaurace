@@ -121,8 +121,89 @@ body {
   color: rgba(28, 36, 24, 0.7);
 }
 
+.stage__menu {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.22rem 1rem;
+  width: min(100%, 23rem);
+  margin: 0.25rem 0 0.15rem;
+  padding: 0.8rem 0.15rem 0.85rem;
+  overflow: hidden;
+  color: var(--ink);
+  text-align: left;
+  text-decoration: none;
+  border-block: 1px solid rgba(143, 115, 24, 0.38);
+  transition:
+    border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stage__menu::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background: rgba(248, 243, 228, 0.56);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stage__menu:hover,
+.stage__menu:focus-visible {
+  border-color: var(--gold-deep);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.stage__menu:hover::before,
+.stage__menu:focus-visible::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.stage__menu:focus-visible {
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--leaf-deep);
+}
+
+.stage__menu:active {
+  transform: translateY(1px);
+}
+
+.stage__menu-label {
+  grid-column: 1 / -1;
+  color: var(--gold-deep);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.stage__menu-action {
+  min-width: 0;
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 1.06rem;
+  font-weight: 550;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.stage__menu-meta {
+  align-self: end;
+  color: rgba(28, 36, 24, 0.52);
+  font-size: 0.63rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  line-height: 1.35;
+  text-align: right;
+  text-transform: uppercase;
+}
+
 .stage__address {
-  margin: 0.35rem 0 0;
+  margin: 0.2rem 0 0;
   font-style: normal;
   font-size: 0.95rem;
   line-height: 1.55;
@@ -237,6 +318,10 @@ body {
   animation-delay: 0.56s;
 }
 
+.reveal--7 {
+  animation-delay: 0.66s;
+}
+
 @keyframes rise-in {
   to {
     opacity: 1;
@@ -257,6 +342,19 @@ body {
   .reveal,
   .stage__glow {
     animation: none;
+  }
+
+  .stage__menu,
+  .stage__menu::before {
+    transition: none;
+  }
+
+  .stage__menu:hover,
+  .stage__menu:focus-visible,
+  .stage__menu:active,
+  .stage__menu:hover::before,
+  .stage__menu:focus-visible::before {
+    transform: none;
   }
 
   .reveal {
