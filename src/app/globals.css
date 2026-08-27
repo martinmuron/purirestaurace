@@ -344,6 +344,19 @@ body {
     animation: none;
   }
 
+  .stage__menu,
+  .stage__menu::before {
+    transition: none;
+  }
+
+  .stage__menu:hover,
+  .stage__menu:focus-visible,
+  .stage__menu:active,
+  .stage__menu:hover::before,
+  .stage__menu:focus-visible::before {
+    transform: none;
+  }
+
   .reveal {
     opacity: 1;
     transform: none;
