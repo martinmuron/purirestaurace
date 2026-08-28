@@ -19,7 +19,7 @@ const dictionaries: Record<Locale, Dictionary> = {
   cs: {
     title: "PURI — Gruzínská restaurace",
     description: "PURI restaurace. Brzy otevíráme v Praze 5 – Stodůlkách.",
-    comingSoon: "Již brzy",
+    comingSoon: "Web připravujeme",
     tagline: "Gruzínská kuchyně v Praze",
     menuLabel: "Aktuální menu",
     menuAction: "Prohlédnout nabídku",
