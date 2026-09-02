@@ -13,8 +13,9 @@ const sans = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "PURI — Gruzínská restaurace",
-  description: "PURI restaurace. Brzy otevíráme v Praze 5 – Stodůlkách.",
+  title: "PURI — Gruzínská restaurace Praha",
+  description:
+    "Gruzínská restaurace PURI na Šostakovičově náměstí v Praze 5 – Stodůlkách.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
