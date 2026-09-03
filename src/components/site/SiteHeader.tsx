@@ -53,7 +53,7 @@ export function SiteHeader({ locale, dictionary }: Props) {
           />
         </Link>
 
-        <nav className="site-header__nav" aria-label="Main">
+        <nav className="site-header__nav" aria-label={dictionary.navAria}>
           {links.map(({ route, key }) => {
             const href = localePath(locale, route);
             const active =
@@ -83,8 +83,8 @@ export function SiteHeader({ locale, dictionary }: Props) {
             aria-label={dictionary.nav.openMenu}
             onClick={() => setOpen((value) => !value)}
           >
-            <span />
-            <span />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -94,7 +94,7 @@ export function SiteHeader({ locale, dictionary }: Props) {
         className={open ? "site-header__panel is-open" : "site-header__panel"}
         hidden={!open}
       >
-        <nav className="site-header__panel-nav" aria-label="Main">
+        <nav className="site-header__panel-nav" aria-label={dictionary.navAria}>
           {links.map(({ route, key }) => (
             <Link
               key={route || "home"}

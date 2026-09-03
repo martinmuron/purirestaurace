@@ -12,9 +12,14 @@ type Props = {
 export function SiteShell({ locale, dictionary, children }: Props) {
   return (
     <div className="site">
+      <a className="skip-link" href="#main">
+        {dictionary.skipToContent}
+      </a>
       <div className="site__grain" aria-hidden="true" />
       <SiteHeader locale={locale} dictionary={dictionary} />
-      <div className="site__main">{children}</div>
+      <main id="main" className="site__main" tabIndex={-1}>
+        {children}
+      </main>
       <SiteFooter locale={locale} dictionary={dictionary} />
     </div>
   );

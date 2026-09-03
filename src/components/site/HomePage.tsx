@@ -3,7 +3,8 @@ import Link from "next/link";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { localePath } from "@/i18n/dictionaries";
-import { heroPhoto, heroVideo, photos } from "@/content/media";
+import { heroPhoto, photos } from "@/content/media";
+import { WalkthroughVideo } from "./WalkthroughVideo";
 
 type Props = {
   locale: Locale;
@@ -15,7 +16,7 @@ export function HomePage({ locale, dictionary }: Props) {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero" aria-labelledby="hero-title">
         <div className="hero__media" aria-hidden="true">
           <Image
             src={heroPhoto.src}
@@ -30,7 +31,9 @@ export function HomePage({ locale, dictionary }: Props) {
 
         <div className="hero__content">
           <p className="hero__eyebrow reveal">{dictionary.home.eyebrow}</p>
-          <h1 className="hero__title reveal reveal--1">{dictionary.home.headline}</h1>
+          <h1 id="hero-title" className="hero__title reveal reveal--1" translate="no">
+            {dictionary.home.headline}
+          </h1>
           <p className="hero__lead reveal reveal--2">{dictionary.home.lead}</p>
           <div className="hero__actions reveal reveal--3">
             <Link href={localePath(locale, "menu")} className="btn btn--primary">
@@ -43,10 +46,12 @@ export function HomePage({ locale, dictionary }: Props) {
         </div>
       </section>
 
-      <section className="section about">
+      <section className="section about" aria-labelledby="about-title">
         <div className="section__grid about__grid">
           <div className="about__copy">
-            <h2 className="section__title">{dictionary.home.aboutTitle}</h2>
+            <h2 id="about-title" className="section__title">
+              {dictionary.home.aboutTitle}
+            </h2>
             <p className="section__lead">{dictionary.home.aboutBody}</p>
             <p className="about__secondary">{dictionary.home.aboutSecondary}</p>
           </div>
@@ -63,35 +68,34 @@ export function HomePage({ locale, dictionary }: Props) {
         </div>
       </section>
 
-      <section className="section video-section">
+      <section className="section video-section" aria-labelledby="video-title">
         <div className="section__grid video-section__grid">
           <div className="video-section__copy">
-            <h2 className="section__title">{dictionary.home.videoTitle}</h2>
+            <h2 id="video-title" className="section__title">
+              {dictionary.home.videoTitle}
+            </h2>
             <p className="section__lead">{dictionary.home.videoBody}</p>
           </div>
           <div className="video-section__frame">
-            <video
-              className="video-section__player"
-              src={heroVideo.src}
-              poster={heroVideo.poster}
-              controls
-              playsInline
-              preload="metadata"
-            />
+            <WalkthroughVideo title={dictionary.home.videoTitle} />
           </div>
         </div>
       </section>
 
-      <section className="section gallery-teaser">
+      <section className="section gallery-teaser" aria-labelledby="gallery-teaser-title">
         <div className="section__intro">
-          <h2 className="section__title">{dictionary.home.galleryTitle}</h2>
+          <h2 id="gallery-teaser-title" className="section__title">
+            {dictionary.home.galleryTitle}
+          </h2>
           <p className="section__lead">{dictionary.home.galleryBody}</p>
         </div>
         <div className="gallery-teaser__grid">
           {featured.map((photo, index) => (
-            <figure
+            <Link
               key={photo.id}
+              href={localePath(locale, "gallery")}
               className={`gallery-teaser__item gallery-teaser__item--${index + 1}`}
+              aria-label={dictionary.home.galleryCta}
             >
               <Image
                 src={photo.src}
@@ -101,7 +105,7 @@ export function HomePage({ locale, dictionary }: Props) {
                 className="gallery-teaser__image"
                 sizes="(max-width: 900px) 100vw, 33vw"
               />
-            </figure>
+            </Link>
           ))}
         </div>
         <div className="section__actions">

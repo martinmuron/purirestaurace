@@ -12,6 +12,10 @@ export type Dictionary = {
   title: string;
   description: string;
   tagline: string;
+  skipToContent: string;
+  navAria: string;
+  footerAria: string;
+  externalNewTab: string;
   nav: {
     home: string;
     menu: string;
@@ -128,6 +132,10 @@ const dictionaries: Record<Locale, Dictionary> = {
     description:
       "Gruzínská restaurace PURI na Šostakovičově náměstí v Praze 5 – Stodůlkách. Chačapuri, chinkali a gril.",
     tagline: "Gruzínská kuchyně v Praze",
+    skipToContent: "Přejít k obsahu",
+    navAria: "Hlavní navigace",
+    footerAria: "Patička",
+    externalNewTab: "otevře se v novém okně",
     nav: {
       home: "Domů",
       menu: "Menu",
@@ -193,6 +201,10 @@ const dictionaries: Record<Locale, Dictionary> = {
     description:
       "Georgian restaurant PURI on Šostakovičovo náměstí in Prague 5 – Stodůlky. Khachapuri, khinkali and grill.",
     tagline: "Georgian cuisine in Prague",
+    skipToContent: "Skip to content",
+    navAria: "Main navigation",
+    footerAria: "Footer",
+    externalNewTab: "opens in a new tab",
     nav: {
       home: "Home",
       menu: "Menu",
@@ -258,6 +270,10 @@ const dictionaries: Record<Locale, Dictionary> = {
     description:
       "Грузинский ресторан PURI на площади Шостаковича в Праге 5 – Стодулки. Хачапури, хинкали и гриль.",
     tagline: "Грузинская кухня в Праге",
+    skipToContent: "Перейти к содержанию",
+    navAria: "Основная навигация",
+    footerAria: "Подвал",
+    externalNewTab: "откроется в новой вкладке",
     nav: {
       home: "Главная",
       menu: "Меню",
