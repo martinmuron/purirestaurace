@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { HomePage } from "@/components/site/HomePage";
+import { ContactPage } from "@/components/site/ContactPage";
 import { SiteShell } from "@/components/site/SiteShell";
 import { isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -18,19 +18,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!isLocale(raw)) return {};
   const dictionary = getDictionary(raw);
   return {
-    title: dictionary.title,
-    description: dictionary.description,
+    title: `${dictionary.contact.title} — PURI`,
+    description: dictionary.contact.lead,
     alternates: {
       languages: {
-        cs: "/cs",
-        en: "/en",
-        ru: "/ru",
+        cs: "/cs/contact",
+        en: "/en/contact",
+        ru: "/ru/contact",
       },
     },
   };
 }
 
-export default async function LocaleHomePage({ params }: Props) {
+export default async function LocaleContactPage({ params }: Props) {
   const { locale: raw } = await params;
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
@@ -38,7 +38,7 @@ export default async function LocaleHomePage({ params }: Props) {
 
   return (
     <SiteShell locale={locale} dictionary={dictionary}>
-      <HomePage locale={locale} dictionary={dictionary} />
+      <ContactPage locale={locale} dictionary={dictionary} />
     </SiteShell>
   );
 }
