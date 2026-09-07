@@ -1,61 +1,139 @@
+import Image from "next/image";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { MENU_PDF } from "@/content/media";
-import { menuSections } from "@/content/menu";
+import { MENU_PDF, getPhoto } from "@/content/media";
+import { drinkSections, foodSections, type MenuSection } from "@/content/menu";
 
 type Props = {
   locale: Locale;
   dictionary: Dictionary;
 };
 
-export function MenuPage({ locale, dictionary }: Props) {
+function Section({
+  section,
+  locale,
+  dictionary,
+}: {
+  section: MenuSection;
+  locale: Locale;
+  dictionary: Dictionary;
+}) {
+  const withPhotos = section.items.filter((item) => item.photo);
   return (
-    <div className="page">
-      <header className="page__header">
-        <h1 className="page__title">{dictionary.menu.title}</h1>
-        <p className="page__lead">{dictionary.menu.lead}</p>
-        <p className="page__note">{dictionary.menu.trialNote}</p>
+    <section id={section.id} className="menu-sec" aria-labelledby={`menu-${section.id}`}>
+      <div className="menu-sec__head">
+        <h3 id={`menu-${section.id}`} className="menu-sec__title">
+          {section.title[locale]}
+        </h3>
+        {section.note?.[locale] ? (
+          <span className="menu-sec__note">{section.note[locale]}</span>
+        ) : null}
+      </div>
+      {withPhotos.length > 1 ? (
+        <div className="menu-sec__gallery" aria-hidden="true">
+          {withPhotos.slice(0, 6).map((item) => {
+            const photo = getPhoto(item.photo as string);
+            return (
+              <figure key={photo.id}>
+                <Image
+                  src={photo.src}
+                  alt=""
+                  width={photo.width}
+                  height={photo.height}
+                  sizes="(max-width: 720px) 45vw, 12rem"
+                  loading="lazy"
+                />
+              </figure>
+            );
+          })}
+        </div>
+      ) : null}
+      <ul className="mrows">
+        {section.items.map((item) => {
+          const photo = item.photo ? getPhoto(item.photo) : null;
+          return (
+            <li
+              key={`${section.id}-${item.name.cs}`}
+              className={photo ? "mrow" : "mrow mrow--plain"}
+            >
+              {photo ? (
+                <div className="mrow__thumb">
+                  <Image
+                    src={photo.src}
+                    alt={dictionary.photoAlts[photo.id] ?? ""}
+                    width={photo.width}
+                    height={photo.height}
+                    sizes="5rem"
+                    loading="lazy"
+                  />
+                </div>
+              ) : null}
+              <div className="mrow__body">
+                <div className="mrow__line">
+                  <span className="mrow__name">{item.name[locale]}</span>
+                  <span className="mrow__dots" aria-hidden="true" />
+                  <span className="mrow__price">{item.price}</span>
+                </div>
+                {item.description?.[locale] ? (
+                  <p className="mrow__desc">{item.description[locale]}</p>
+                ) : null}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
+export function MenuPage({ locale, dictionary }: Props) {
+  const m = dictionary.menu;
+  return (
+    <>
+      <header className="page-head">
+        <h1>{m.title}</h1>
+        <p>{m.lead}</p>
+        <div className="page-head__actions">
+          <a
+            className="btn-pill"
+            href={MENU_PDF}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${m.pdfAria} (${dictionary.externalNewTab})`}
+          >
+            {m.pdfLabel} · {m.pdfMeta} ↗
+          </a>
+        </div>
+        <span className="page-head__note">{m.trialNote}</span>
       </header>
 
-      <a
-        className="menu-pdf"
-        href={MENU_PDF}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${dictionary.menu.pdfAria} (${dictionary.externalNewTab})`}
-      >
-        <span className="menu-pdf__label">{dictionary.menu.pdfLabel}</span>
-        <strong className="menu-pdf__action">{dictionary.menu.pdfAction}</strong>
-        <span className="menu-pdf__meta">{dictionary.menu.pdfMeta}</span>
-      </a>
+      <nav className="menu-nav" aria-label={m.title}>
+        <div className="wrap">
+          <div className="chips">
+            {[...foodSections, ...drinkSections].map((section) => (
+              <a key={section.id} href={`#${section.id}`} className="chip">
+                {section.title[locale]}
+              </a>
+            ))}
+          </div>
+        </div>
+      </nav>
 
-      <section className="menu-list" aria-labelledby="menu-sections-title">
-        <h2 id="menu-sections-title" className="section__title">
-          {dictionary.menu.sectionsTitle}
-        </h2>
-        <div className="menu-list__sections">
-          {menuSections.map((section) => (
-            <section key={section.id} className="menu-section">
-              <h3 className="menu-section__title">{section.title[locale]}</h3>
-              <ul className="menu-section__items">
-                {section.items.map((item) => {
-                  const description = item.description?.[locale];
-                  return (
-                    <li key={`${section.id}-${item.name}`} className="menu-item">
-                      <div className="menu-item__row">
-                        <span className="menu-item__name">{item.name}</span>
-                        <span className="menu-item__rule" aria-hidden="true" />
-                        <span className="menu-item__price">{item.price}</span>
-                      </div>
-                      {description ? <p className="menu-item__desc">{description}</p> : null}
-                    </li>
-                  );
-                })}
-              </ul>
-            </section>
+      <div className="wrap">
+        <div className="menu-group">
+          <p className="menu-group__title">{m.food}</p>
+          {foodSections.map((section) => (
+            <Section key={section.id} section={section} locale={locale} dictionary={dictionary} />
           ))}
         </div>
-      </section>
-    </div>
+        <div className="menu-group">
+          <p className="menu-group__title">{m.drinks}</p>
+          {drinkSections.map((section) => (
+            <Section key={section.id} section={section} locale={locale} dictionary={dictionary} />
+          ))}
+        </div>
+        <div style={{ height: "clamp(3rem, 6vw, 5rem)" }} aria-hidden="true" />
+      </div>
+    </>
   );
 }

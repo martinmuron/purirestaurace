@@ -3,7 +3,12 @@ import Link from "next/link";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { localePath } from "@/i18n/dictionaries";
-import { heroPhoto, photos } from "@/content/media";
+import { INSTAGRAM_URL } from "@/content/site";
+import { getPhoto, heroCutout, photos } from "@/content/media";
+import { foodSections } from "@/content/menu";
+import { Carousel } from "./Carousel";
+import { ContactBlock } from "./ContactBlock";
+import { PopularDishes, type DishCard } from "./PopularDishes";
 import { WalkthroughVideo } from "./WalkthroughVideo";
 
 type Props = {
@@ -11,107 +16,311 @@ type Props = {
   dictionary: Dictionary;
 };
 
+const categoryPhotos: Record<string, string> = {
+  bread: "khachapuri-adjarian",
+  khinkali: "khinkali-plate",
+  grill: "grill-platter-close",
+};
+
+const instagramPhotos = ["khinkali-hands", "pkhali-table", "khachapuri-oil", "pork-kiwi-carafe"];
+
+const marqueePills = ["khachapuri-megruli-wide", "table-spread-wide", "shashlik-coals"];
+
 export function HomePage({ locale, dictionary }: Props) {
-  const featured = photos.filter((photo) => photo.featured).slice(0, 3);
+  const alt = (id: string) => dictionary.photoAlts[id] ?? "";
+
+  const dishes: DishCard[] = foodSections.flatMap((section) =>
+    section.items
+      .filter((item) => item.photo)
+      .map((item) => {
+        const photo = getPhoto(item.photo as string);
+        return {
+          id: `${section.id}-${item.name.cs}`,
+          sectionId: section.id,
+          name: item.name[locale],
+          description: item.description?.[locale],
+          price: item.price,
+          href: `${localePath(locale, "menu")}#${section.id}`,
+          photo: { src: photo.src, width: photo.width, height: photo.height, alt: alt(photo.id) },
+        };
+      }),
+  );
+
+  const categories = foodSections
+    .filter((section) => section.items.some((item) => item.photo))
+    .map((section) => ({ id: section.id, label: section.title[locale] }));
+
+  const galleryItems = [
+    ...photos.slice(0, 8).map((p) => ({ ...p, alt: alt(p.id), caption: alt(p.id) })),
+  ];
+
+  const quotePillA = getPhoto("khinkali-hands");
+  const quotePillB = getPhoto("table-spread-wide");
+  const terrace = getPhoto("terrace");
+  const spaceMain = getPhoto("garden-view");
 
   return (
     <>
       <section className="hero" aria-labelledby="hero-title">
-        <div className="hero__media" aria-hidden="true">
+        <h1 id="hero-title" className="display hero__title">
+          <em>{dictionary.hero.accent}</em>
+          {dictionary.hero.rest}
+        </h1>
+        <p className="hero__lead">{dictionary.hero.lead}</p>
+        <Link href={localePath(locale, "menu")} className="btn-circle hero__cta">
+          {dictionary.hero.cta}
+        </Link>
+        <div className="hero__spacer" aria-hidden="true" />
+        <div className="hero__plate" aria-hidden="true">
           <Image
-            src={heroPhoto.src}
+            src={heroCutout.src}
             alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="hero__image"
+            width={heroCutout.width}
+            height={heroCutout.height}
+            sizes="(max-width: 900px) 88vw, 48rem"
+            preload
           />
-          <div className="hero__veil" />
-        </div>
-
-        <div className="hero__content">
-          <p className="hero__eyebrow reveal">{dictionary.home.eyebrow}</p>
-          <h1 id="hero-title" className="hero__title reveal reveal--1" translate="no">
-            {dictionary.home.headline}
-          </h1>
-          <p className="hero__lead reveal reveal--2">{dictionary.home.lead}</p>
-          <div className="hero__actions reveal reveal--3">
-            <Link href={localePath(locale, "menu")} className="btn btn--primary">
-              {dictionary.home.ctaMenu}
-            </Link>
-            <Link href={localePath(locale, "contact")} className="btn btn--ghost">
-              {dictionary.home.ctaVisit}
-            </Link>
-          </div>
         </div>
       </section>
 
-      <section className="section about" aria-labelledby="about-title">
-        <div className="section__grid about__grid">
-          <div className="about__copy">
-            <h2 id="about-title" className="section__title">
-              {dictionary.home.aboutTitle}
-            </h2>
-            <p className="section__lead">{dictionary.home.aboutBody}</p>
-            <p className="about__secondary">{dictionary.home.aboutSecondary}</p>
-          </div>
-          <div className="about__frame">
+      <section className="quote on-paper" aria-labelledby="quote-title">
+        <div className="wrap">
+          <h2 id="quote-title" className="display quote__title">
+            <em>{dictionary.quote.a1}</em> {dictionary.quote.a2}{" "}
+            <span className="quote__pill" aria-hidden="true">
+              <Image
+                src={quotePillA.src}
+                alt=""
+                width={quotePillA.width}
+                height={quotePillA.height}
+                sizes="9rem"
+                loading="lazy"
+              />
+            </span>
+            <br />
+            <span className="quote__pill" aria-hidden="true">
+              <Image
+                src={quotePillB.src}
+                alt=""
+                width={quotePillB.width}
+                height={quotePillB.height}
+                sizes="9rem"
+                loading="lazy"
+              />
+            </span>{" "}
+            <em>{dictionary.quote.b1}</em> {dictionary.quote.b2}
+          </h2>
+          <p className="quote__body">{dictionary.quote.body}</p>
+          <div className="quote__media">
             <Image
-              src="/media/photos/b53588b4.jpg"
-              alt={dictionary.photoAlts.oven}
-              width={1023}
-              height={1537}
-              className="about__image"
-              sizes="(max-width: 900px) 100vw, 42vw"
+              src={terrace.src}
+              alt={alt(terrace.id)}
+              width={terrace.width}
+              height={terrace.height}
+              sizes="(max-width: 1400px) 100vw, 84rem"
+              loading="lazy"
             />
           </div>
         </div>
       </section>
 
-      <section className="section video-section" aria-labelledby="video-title">
-        <div className="section__grid video-section__grid">
-          <div className="video-section__copy">
-            <h2 id="video-title" className="section__title">
-              {dictionary.home.videoTitle}
+      <section className="sec" aria-labelledby="categories-title">
+        <div className="wrap">
+          <div className="sec__head">
+            <h2 id="categories-title" className="sec__title">
+              {dictionary.categories.title}
             </h2>
-            <p className="section__lead">{dictionary.home.videoBody}</p>
+            <p className="sec__lead">{dictionary.categories.lead}</p>
           </div>
-          <div className="video-section__frame">
-            <WalkthroughVideo title={dictionary.home.videoTitle} />
+          <div className="cats">
+            {dictionary.categories.items.map((item) => {
+              const photo = getPhoto(categoryPhotos[item.id]);
+              return (
+                <Link
+                  key={item.id}
+                  href={`${localePath(locale, "menu")}#${item.id}`}
+                  className="cat"
+                >
+                  <div className="cat__media">
+                    <Image
+                      src={photo.src}
+                      alt={alt(photo.id)}
+                      width={photo.width}
+                      height={photo.height}
+                      sizes="(max-width: 720px) 100vw, 30vw"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="cat__body">
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                    <span className="link-out">{dictionary.categories.cta}</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="section gallery-teaser" aria-labelledby="gallery-teaser-title">
-        <div className="section__intro">
-          <h2 id="gallery-teaser-title" className="section__title">
-            {dictionary.home.galleryTitle}
-          </h2>
-          <p className="section__lead">{dictionary.home.galleryBody}</p>
-        </div>
-        <div className="gallery-teaser__grid">
-          {featured.map((photo, index) => (
-            <Link
-              key={photo.id}
-              href={localePath(locale, "gallery")}
-              className={`gallery-teaser__item gallery-teaser__item--${index + 1}`}
-              aria-label={dictionary.home.galleryCta}
-            >
-              <Image
-                src={photo.src}
-                alt={dictionary.photoAlts[photo.id] ?? ""}
-                width={photo.width}
-                height={photo.height}
-                className="gallery-teaser__image"
-                sizes="(max-width: 900px) 100vw, 33vw"
-              />
+      <section className="sec" aria-labelledby="popular-title">
+        <div className="wrap">
+          <div className="sec__row">
+            <div className="sec__head">
+              <h2 id="popular-title" className="sec__title">
+                {dictionary.popular.title}
+              </h2>
+            </div>
+            <Link href={localePath(locale, "menu")} className="link-out">
+              {dictionary.popular.viewMenu}
             </Link>
+          </div>
+          <PopularDishes
+            categories={categories}
+            dishes={dishes}
+            labels={{
+              all: dictionary.popular.all,
+              choose: dictionary.popular.choose,
+              showMore: dictionary.popular.showMore,
+              showLess: dictionary.popular.showLess,
+            }}
+          />
+        </div>
+      </section>
+
+      <section className="sec" aria-labelledby="space-title">
+        <div className="wrap space">
+          <div className="space__media">
+            <div className="space__main">
+              <Image
+                src={spaceMain.src}
+                alt={alt(spaceMain.id)}
+                width={spaceMain.width}
+                height={spaceMain.height}
+                sizes="(max-width: 900px) 82vw, 40vw"
+                loading="lazy"
+              />
+            </div>
+            <WalkthroughVideo title={dictionary.space.videoTitle} className="space__video" />
+          </div>
+          <div className="space__text">
+            <h2 id="space-title" className="sec__title">
+              {dictionary.space.title}
+            </h2>
+            <p className="space__lead">{dictionary.space.lead}</p>
+            <p className="space__body">{dictionary.space.body}</p>
+            <ul className="facts">
+              {dictionary.space.facts.map((fact) => (
+                <li key={fact.strong}>
+                  <strong>{fact.strong}</strong>
+                  <span>{fact.detail}</span>
+                </li>
+              ))}
+            </ul>
+            <Link href={localePath(locale, "gallery")} className="link-out">
+              {dictionary.space.cta}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="sec insta" aria-labelledby="insta-title">
+        <div className="wrap">
+          <div className="sec__head">
+            <h2 id="insta-title" className="sec__title">
+              {dictionary.instagram.title} <span className="gold">{dictionary.instagram.accent}</span>
+            </h2>
+            <p className="sec__lead">{dictionary.instagram.lead}</p>
+          </div>
+          <div className="insta__row">
+            {instagramPhotos.map((id) => {
+              const photo = getPhoto(id);
+              return (
+                <a
+                  key={id}
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="insta__item"
+                  aria-label={`${alt(id)} (${dictionary.externalNewTab})`}
+                >
+                  <Image
+                    src={photo.src}
+                    alt=""
+                    width={photo.width}
+                    height={photo.height}
+                    sizes="(max-width: 720px) 72vw, 22vw"
+                    loading="lazy"
+                  />
+                </a>
+              );
+            })}
+          </div>
+          <div className="insta__cta">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn-pill">
+              {dictionary.instagram.cta} ↗
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div className="marquee" aria-hidden="true">
+        <div className="marquee__track">
+          {[0, 1].map((dup) => (
+            <div className="marquee__group" key={dup}>
+              {dictionary.marquee.map((word, index) => {
+                const pill = getPhoto(marqueePills[index % marqueePills.length]);
+                return (
+                  <span key={`${dup}-${word}`} className="marquee__group">
+                    <span className={index % 2 === 0 ? "marquee__word is-gold" : "marquee__word"}>
+                      {word}
+                    </span>
+                    <span className="marquee__pill">
+                      <Image
+                        src={pill.src}
+                        alt=""
+                        width={pill.width}
+                        height={pill.height}
+                        sizes="10rem"
+                        loading="lazy"
+                      />
+                    </span>
+                  </span>
+                );
+              })}
+            </div>
           ))}
         </div>
-        <div className="section__actions">
-          <Link href={localePath(locale, "gallery")} className="btn btn--primary">
-            {dictionary.home.galleryCta}
-          </Link>
+      </div>
+
+      <section className="sec" aria-labelledby="gallery-title">
+        <div className="wrap">
+          <div className="sec__row">
+            <div className="sec__head">
+              <h2 id="gallery-title" className="sec__title">
+                {dictionary.galleryHome.title}
+              </h2>
+              <p className="sec__lead">{dictionary.galleryHome.lead}</p>
+            </div>
+            <Link href={localePath(locale, "gallery")} className="link-out">
+              {dictionary.galleryHome.cta}
+            </Link>
+          </div>
+          <Carousel
+            items={galleryItems}
+            labels={{ prev: dictionary.galleryHome.prev, next: dictionary.galleryHome.next }}
+          />
+        </div>
+      </section>
+
+      <section className="sec" aria-labelledby="contact-title">
+        <div className="wrap">
+          <div className="sec__head">
+            <h2 id="contact-title" className="sec__title">
+              {dictionary.contact.title}
+            </h2>
+          </div>
+          <ContactBlock dictionary={dictionary} />
         </div>
       </section>
     </>

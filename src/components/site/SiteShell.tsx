@@ -15,7 +15,6 @@ export function SiteShell({ locale, dictionary, children }: Props) {
       <a className="skip-link" href="#main">
         {dictionary.skipToContent}
       </a>
-      <div className="site__grain" aria-hidden="true" />
       <SiteHeader locale={locale} dictionary={dictionary} />
       <main id="main" className="site__main" tabIndex={-1}>
         {children}

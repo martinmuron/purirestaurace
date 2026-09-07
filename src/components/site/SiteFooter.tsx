@@ -1,8 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { localePath } from "@/i18n/dictionaries";
-import { EMAIL, FACEBOOK_URL, INSTAGRAM_URL } from "@/content/site";
+import {
+  ADDRESS_LINES,
+  EMAIL,
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  MAPS_URL,
+} from "@/content/site";
 
 type Props = {
   locale: Locale;
@@ -10,47 +17,55 @@ type Props = {
 };
 
 export function SiteFooter({ locale, dictionary }: Props) {
-  const external = dictionary.externalNewTab;
-
   return (
-    <footer className="site-footer">
-      <div className="site-footer__inner">
-        <div className="site-footer__brand">
-          <p className="site-footer__name" translate="no">
-            {dictionary.brand}
-          </p>
-          <p className="site-footer__tag">{dictionary.tagline}</p>
-        </div>
-
-        <nav className="site-footer__nav" aria-label={dictionary.footerAria}>
-          <Link href={localePath(locale, "menu")}>{dictionary.nav.menu}</Link>
-          <Link href={localePath(locale, "gallery")}>{dictionary.nav.gallery}</Link>
-          <Link href={localePath(locale, "contact")}>{dictionary.nav.contact}</Link>
-        </nav>
-
-        <div className="site-footer__meta">
-          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
-          <div className="site-footer__socials">
-            <a
-              href={FACEBOOK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Facebook (${external})`}
-            >
-              Facebook
+    <footer className="ftr" aria-label={dictionary.footerAria}>
+      <div className="wrap">
+        <div className="ftr__grid">
+          <div className="ftr__col">
+            <Image
+              src="/logo-light.png"
+              alt={`${dictionary.brand} — ${dictionary.tagline}`}
+              width={700}
+              height={560}
+              className="ftr__logo"
+              loading="lazy"
+            />
+          </div>
+          <div className="ftr__col">
+            <strong>{dictionary.navAria}</strong>
+            <Link href={localePath(locale)}>{dictionary.nav.home}</Link>
+            <Link href={localePath(locale, "menu")}>{dictionary.nav.menu}</Link>
+            <Link href={localePath(locale, "gallery")}>{dictionary.nav.gallery}</Link>
+            <Link href={localePath(locale, "contact")}>{dictionary.nav.contact}</Link>
+          </div>
+          <div className="ftr__col">
+            <strong>{dictionary.contact.addressTitle}</strong>
+            <span>{ADDRESS_LINES[0]}</span>
+            <span>{ADDRESS_LINES[1]}</span>
+            <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
+              {dictionary.contact.mapAction} ↗
             </a>
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Instagram (${external})`}
-            >
-              Instagram
+          </div>
+          <div className="ftr__col">
+            <strong>{dictionary.contact.questions}</strong>
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
+              Instagram ↗
+            </a>
+            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer">
+              Facebook ↗
             </a>
           </div>
         </div>
+        <div className="ftr__bottom">
+          <span translate="no">
+            © {new Date().getFullYear()} {dictionary.footer.rights}
+          </span>
+          <span>
+            {dictionary.contact.companyName} · {dictionary.contact.companyId}
+          </span>
+        </div>
       </div>
-      <p className="site-footer__copy">{dictionary.footer.rights}</p>
     </footer>
   );
 }

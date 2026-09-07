@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const display = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin", "latin-ext"],
+const display = Playfair_Display({
+  variable: "--font-display",
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  style: ["normal", "italic"],
+  weight: ["400", "500"],
 });
 
 const sans = Manrope({
-  variable: "--font-manrope",
+  variable: "--font-sans",
   subsets: ["latin", "latin-ext", "cyrillic"],
 });
 
