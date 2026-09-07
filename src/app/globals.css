@@ -1299,18 +1299,6 @@ button {
   color: var(--fg-soft);
 }
 
-.page-head__note {
-  display: inline-block;
-  margin-top: 1.25rem;
-  padding: 0.4rem 0.9rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
-}
-
 .page-head__actions {
   display: flex;
   justify-content: center;
@@ -1328,11 +1316,40 @@ button {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
-  padding-top: 0.5rem;
+  padding: 0.5rem 0 0.75rem;
 }
 
-.menu-nav .chips {
-  padding-bottom: 0.75rem;
+.menu-select {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.25rem 0;
+}
+
+.menu-select label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+.menu-select select {
+  appearance: none;
+  flex: 1;
+  min-width: 0;
+  max-width: 24rem;
+  background-color: var(--bg-2);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23e2a54b' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--fg);
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.6rem 2.5rem 0.6rem 1.1rem;
+  cursor: pointer;
 }
 
 .menu-group {
@@ -1350,7 +1367,8 @@ button {
 .menu-sec {
   padding: clamp(2rem, 4vw, 3.5rem) 0;
   border-top: 1px solid var(--line);
-  scroll-margin-top: calc(var(--header-h) + 4.5rem);
+  /* Adds to html scroll-padding (header): total clears header + sticky menu bar. */
+  scroll-margin-top: 4rem;
 }
 
 .menu-sec__head {

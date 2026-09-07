@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { MENU_PDF, getPhoto } from "@/content/media";
+import { MenuCategorySelect } from "./MenuCategorySelect";
 import { drinkSections, foodSections, type MenuSection } from "@/content/menu";
 
 type Props = {
@@ -104,18 +105,30 @@ export function MenuPage({ locale, dictionary }: Props) {
             {m.pdfLabel} · {m.pdfMeta} ↗
           </a>
         </div>
-        <span className="page-head__note">{m.trialNote}</span>
       </header>
 
       <nav className="menu-nav" aria-label={m.title}>
         <div className="wrap">
-          <div className="chips">
-            {[...foodSections, ...drinkSections].map((section) => (
-              <a key={section.id} href={`#${section.id}`} className="chip">
-                {section.title[locale]}
-              </a>
-            ))}
-          </div>
+          <MenuCategorySelect
+            id="menu-category"
+            label={m.category}
+            groups={[
+              {
+                label: m.food,
+                options: foodSections.map((section) => ({
+                  id: section.id,
+                  title: section.title[locale],
+                })),
+              },
+              {
+                label: m.drinks,
+                options: drinkSections.map((section) => ({
+                  id: section.id,
+                  title: section.title[locale],
+                })),
+              },
+            ]}
+          />
         </div>
       </nav>
 

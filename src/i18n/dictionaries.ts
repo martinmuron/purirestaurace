@@ -96,7 +96,7 @@ export type Dictionary = {
   menu: {
     title: string;
     lead: string;
-    trialNote: string;
+    category: string;
     pdfLabel: string;
     pdfAction: string;
     pdfMeta: string;
@@ -346,7 +346,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     space: {
       title: "Prostor, který dýchá",
       lead: "Salonek s modrými trámy, terasa pod vrbami a pec na dřevo.",
-      body: "PURI stojí na Šostakovičově náměstí ve Stodůlkách. Uvnitř najdete tkané lampy, terakotová křesla a police s gruzínským vínem, venku krytou terasu s výhledem do zahrady. Zkušební provoz už běží.",
+      body: "PURI stojí na Šostakovičově náměstí ve Stodůlkách. Uvnitř najdete tkané lampy, terakotová křesla a police s gruzínským vínem, venku krytou terasu s výhledem do zahrady.",
       facts: [
         { strong: "Tone", detail: "Pec na dřevo na chléb puri a chačapuri" },
         { strong: "Terasa", detail: "Krytá zahrada pro letní večery" },
@@ -375,7 +375,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       lead: "Najdete nás na Šostakovičově náměstí v Praze 5 – Stodůlkách.",
       questions: "Pro dotazy",
       hoursTitle: "Otevírací doba",
-      hoursBody: "Zkušební provoz. Aktuální otevírací dobu sledujte na sociálních sítích.",
+      hoursBody: "Aktuální otevírací dobu sledujte na sociálních sítích.",
       hoursNote: "Rezervace přijímáme e-mailem.",
       locationTitle: "Kde nás najdete",
       addressTitle: "Adresa",
@@ -390,8 +390,8 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     menu: {
       title: "Menu",
-      lead: "Kompletní nabídka ze zkušebního provozu. Ceny jsou uvedeny v Kč.",
-      trialNote: "Zkušební provoz — nabídka se může měnit.",
+      lead: "Kompletní nabídka. Ceny jsou uvedeny v Kč.",
+      category: "Kategorie",
       pdfLabel: "Menu v PDF",
       pdfAction: "Otevřít PDF",
       pdfMeta: "Česky · 3 strany",
@@ -480,7 +480,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     space: {
       title: "A room that breathes",
       lead: "A blue-beamed salon, a terrace under the willows and a wood-fired oven.",
-      body: "PURI sits on Šostakovičovo náměstí in Stodůlky. Inside you will find woven pendant lights, terracotta chairs and shelves of Georgian wine; outside, a covered terrace overlooking the garden. Our soft opening is underway.",
+      body: "PURI sits on Šostakovičovo náměstí in Stodůlky. Inside you will find woven pendant lights, terracotta chairs and shelves of Georgian wine; outside, a covered terrace overlooking the garden.",
       facts: [
         { strong: "Tone", detail: "Wood-fired oven for puri bread and khachapuri" },
         { strong: "Terrace", detail: "Covered garden for summer evenings" },
@@ -509,7 +509,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       lead: "Find us on Šostakovičovo náměstí in Prague 5 – Stodůlky.",
       questions: "For any questions",
       hoursTitle: "Working hours",
-      hoursBody: "Soft opening. Follow our social channels for current opening hours.",
+      hoursBody: "Follow our social channels for current opening hours.",
       hoursNote: "Reservations by email.",
       locationTitle: "Our location",
       addressTitle: "Address",
@@ -524,8 +524,8 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     menu: {
       title: "Menu",
-      lead: "The complete soft-opening menu. Prices are in CZK.",
-      trialNote: "Soft opening — dishes may change.",
+      lead: "The complete menu. Prices are in CZK.",
+      category: "Category",
       pdfLabel: "Menu as PDF",
       pdfAction: "Open PDF",
       pdfMeta: "Czech · 3 pages",
@@ -614,7 +614,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     space: {
       title: "Пространство, которое дышит",
       lead: "Зал с голубыми балками, терраса под ивами и дровяная печь.",
-      body: "PURI находится на площади Шостаковича в Стодулках. Внутри — плетёные светильники, терракотовые кресла и полки с грузинским вином, снаружи — крытая терраса с видом на сад. Идёт пробный режим работы.",
+      body: "PURI находится на площади Шостаковича в Стодулках. Внутри — плетёные светильники, терракотовые кресла и полки с грузинским вином, снаружи — крытая терраса с видом на сад.",
       facts: [
         { strong: "Тонэ", detail: "Дровяная печь для хлеба пури и хачапури" },
         { strong: "Терраса", detail: "Крытый сад для летних вечеров" },
@@ -643,7 +643,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       lead: "Мы на площади Шостаковича в Праге 5 – Стодулки.",
       questions: "По любым вопросам",
       hoursTitle: "Часы работы",
-      hoursBody: "Пробный режим. Актуальные часы смотрите в соцсетях.",
+      hoursBody: "Актуальные часы смотрите в соцсетях.",
       hoursNote: "Бронирование по электронной почте.",
       locationTitle: "Как нас найти",
       addressTitle: "Адрес",
@@ -658,8 +658,8 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     menu: {
       title: "Меню",
-      lead: "Полное меню пробного режима. Цены указаны в кронах.",
-      trialNote: "Пробный режим — ассортимент может меняться.",
+      lead: "Полное меню. Цены указаны в кронах.",
+      category: "Категория",
       pdfLabel: "Меню в PDF",
       pdfAction: "Открыть PDF",
       pdfMeta: "На чешском · 3 страницы",
