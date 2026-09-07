@@ -14,7 +14,7 @@ export type GalleryPhoto = {
 
 type Props = {
   photos: GalleryPhoto[];
-  labels: { all: string; food: string; interior: string };
+  labels: { filter: string; all: string; food: string; interior: string };
 };
 
 const filters = ["all", "food", "interior"] as const;
@@ -25,13 +25,12 @@ export function GalleryGrid({ photos, labels }: Props) {
 
   return (
     <div>
-      <div className="chips" role="tablist" aria-label={labels.all}>
+      <div className="chips" role="group" aria-label={labels.filter}>
         {filters.map((filter) => (
           <button
             key={filter}
             type="button"
-            role="tab"
-            aria-selected={active === filter}
+            aria-pressed={active === filter}
             className={active === filter ? "chip is-active" : "chip"}
             onClick={() => setActive(filter)}
           >

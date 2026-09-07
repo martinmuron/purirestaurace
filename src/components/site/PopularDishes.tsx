@@ -17,7 +17,7 @@ export type DishCard = {
 type Props = {
   categories: { id: string; label: string }[];
   dishes: DishCard[];
-  labels: { all: string; choose: string; showMore: string; showLess: string };
+  labels: { filter: string; all: string; choose: string; showMore: string; showLess: string };
   initialCount?: number;
 };
 
@@ -31,11 +31,10 @@ export function PopularDishes({ categories, dishes, labels, initialCount = 6 }: 
 
   return (
     <div>
-      <div className="chips" role="tablist" aria-label={labels.all}>
+      <div className="chips" role="group" aria-label={labels.filter}>
         <button
           type="button"
-          role="tab"
-          aria-selected={active === "all"}
+          aria-pressed={active === "all"}
           className={active === "all" ? "chip is-active" : "chip"}
           onClick={() => {
             setActive("all");
@@ -48,8 +47,7 @@ export function PopularDishes({ categories, dishes, labels, initialCount = 6 }: 
           <button
             key={category.id}
             type="button"
-            role="tab"
-            aria-selected={active === category.id}
+            aria-pressed={active === category.id}
             className={active === category.id ? "chip is-active" : "chip"}
             onClick={() => {
               setActive(category.id);

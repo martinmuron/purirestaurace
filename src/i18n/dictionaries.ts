@@ -45,6 +45,7 @@ export type Dictionary = {
   };
   popular: {
     title: string;
+    filter: string;
     all: string;
     viewMenu: string;
     choose: string;
@@ -107,6 +108,7 @@ export type Dictionary = {
   gallery: {
     title: string;
     lead: string;
+    filter: string;
     all: string;
     food: string;
     interior: string;
@@ -334,6 +336,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     popular: {
       title: "Oblíbená jídla",
+      filter: "Filtrovat podle kategorie",
       all: "Všechny kategorie",
       viewMenu: "Celé menu",
       choose: "V menu",
@@ -400,6 +403,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     gallery: {
       title: "Galerie",
       lead: "Jídlo, interiér, terasa a detaily prostoru restaurace PURI.",
+      filter: "Filtrovat galerii",
       all: "Vše",
       food: "Jídlo",
       interior: "Interiér",
@@ -466,6 +470,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     popular: {
       title: "Popular dishes",
+      filter: "Filter by category",
       all: "All categories",
       viewMenu: "View menu",
       choose: "In the menu",
@@ -532,6 +537,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     gallery: {
       title: "Gallery",
       lead: "Food, interiors, terrace and details from restaurant PURI.",
+      filter: "Filter gallery",
       all: "All",
       food: "Food",
       interior: "Interior",
@@ -598,6 +604,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     },
     popular: {
       title: "Популярные блюда",
+      filter: "Фильтр по категориям",
       all: "Все категории",
       viewMenu: "Всё меню",
       choose: "В меню",
@@ -664,6 +671,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     gallery: {
       title: "Галерея",
       lead: "Еда, интерьеры, терраса и детали ресторана PURI.",
+      filter: "Фильтровать галерею",
       all: "Все",
       food: "Еда",
       interior: "Интерьер",

@@ -17,7 +17,7 @@ export function ContactPage({ locale, dictionary }: Props) {
         <p>{c.lead}</p>
       </header>
       <div className="wrap" style={{ paddingBottom: "clamp(3rem, 6vw, 5rem)" }}>
-        <ContactBlock dictionary={dictionary} />
+        <ContactBlock dictionary={dictionary} headingLevel={2} />
         <div className="company">
           <span>{c.companyTitle}</span>
           <span>{c.companyName}</span>

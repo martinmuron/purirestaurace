@@ -48,7 +48,8 @@ export function Carousel({ items, labels }: Props) {
     const track = trackRef.current;
     if (!track) return;
     const first = track.firstElementChild as HTMLElement | null;
-    const amount = first ? first.offsetWidth + 20 : track.clientWidth * 0.8;
+    const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
+    const amount = first ? first.offsetWidth + gap : track.clientWidth * 0.8;
     track.scrollBy({ left: amount * direction, behavior: "smooth" });
   };
 

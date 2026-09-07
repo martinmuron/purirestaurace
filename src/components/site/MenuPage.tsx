@@ -22,9 +22,9 @@ function Section({
   return (
     <section id={section.id} className="menu-sec" aria-labelledby={`menu-${section.id}`}>
       <div className="menu-sec__head">
-        <h3 id={`menu-${section.id}`} className="menu-sec__title">
+        <h2 id={`menu-${section.id}`} className="menu-sec__title">
           {section.title[locale]}
-        </h3>
+        </h2>
         {section.note?.[locale] ? (
           <span className="menu-sec__note">{section.note[locale]}</span>
         ) : null}

@@ -69,6 +69,7 @@ export function GalleryPage({ locale, dictionary }: Props) {
         <GalleryGrid
           photos={all}
           labels={{
+            filter: dictionary.gallery.filter,
             all: dictionary.gallery.all,
             food: dictionary.gallery.food,
             interior: dictionary.gallery.interior,

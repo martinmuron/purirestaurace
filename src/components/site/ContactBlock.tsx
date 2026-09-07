@@ -10,6 +10,8 @@ import {
 type Props = {
   dictionary: Dictionary;
   showMap?: boolean;
+  /** Heading level for the contact columns: h3 under a section h2, h2 directly under the page h1. */
+  headingLevel?: 2 | 3;
 };
 
 /** OpenStreetMap embed centred on the restaurant; no cookie consent wall, unlike Google embeds in the EU. */
@@ -43,56 +45,72 @@ function IconPin() {
   );
 }
 
-export function ContactBlock({ dictionary, showMap = true }: Props) {
+export function ContactBlock({ dictionary, showMap = true, headingLevel = 3 }: Props) {
   const c = dictionary.contact;
+  const H = headingLevel === 2 ? "h2" : "h3";
   return (
     <div>
       <div className="ccols">
         <div className="ccol">
-          <h3 className="ccol__head">
+          <H className="ccol__head">
             <IconSend />
             {c.questions}
-          </h3>
+          </H>
           <div className="ccol__body">
             <span>
               {c.emailTitle}: <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
             </span>
             <span>
               Instagram:{" "}
-              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Instagram (${dictionary.externalNewTab})`}
+              >
                 @purirestaurace
               </a>
             </span>
             <span>
               Facebook:{" "}
-              <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer">
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Facebook (${dictionary.externalNewTab})`}
+              >
                 /purirestaurace
               </a>
             </span>
           </div>
         </div>
         <div className="ccol">
-          <h3 className="ccol__head">
+          <H className="ccol__head">
             <IconClock />
             {c.hoursTitle}
-          </h3>
+          </H>
           <div className="ccol__body">
             <span>{c.hoursBody}</span>
             <span>{c.hoursNote}</span>
           </div>
         </div>
         <div className="ccol">
-          <h3 className="ccol__head">
+          <H className="ccol__head">
             <IconPin />
             {c.locationTitle}
-          </h3>
+          </H>
           <div className="ccol__body">
             <address>
               {ADDRESS_LINES[0]}
               <br />
               {ADDRESS_LINES[1]}
             </address>
-            <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
+            <a
+              href={MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${c.mapAction} (${dictionary.externalNewTab})`}
+            >
               {c.mapAction} ↗
             </a>
           </div>
@@ -113,6 +131,7 @@ export function ContactBlock({ dictionary, showMap = true }: Props) {
             href={MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`${c.mapAction} (${dictionary.externalNewTab})`}
           >
             {c.mapAction} ↗
           </a>

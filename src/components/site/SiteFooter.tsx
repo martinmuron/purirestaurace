@@ -42,17 +42,32 @@ export function SiteFooter({ locale, dictionary }: Props) {
             <strong>{dictionary.contact.addressTitle}</strong>
             <span>{ADDRESS_LINES[0]}</span>
             <span>{ADDRESS_LINES[1]}</span>
-            <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
+            <a
+              href={MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${dictionary.contact.mapAction} (${dictionary.externalNewTab})`}
+            >
               {dictionary.contact.mapAction} ↗
             </a>
           </div>
           <div className="ftr__col">
             <strong>{dictionary.contact.questions}</strong>
             <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Instagram (${dictionary.externalNewTab})`}
+            >
               Instagram ↗
             </a>
-            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer">
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Facebook (${dictionary.externalNewTab})`}
+            >
               Facebook ↗
             </a>
           </div>

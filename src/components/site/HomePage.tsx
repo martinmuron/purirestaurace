@@ -179,6 +179,7 @@ export function HomePage({ locale, dictionary }: Props) {
             categories={categories}
             dishes={dishes}
             labels={{
+              filter: dictionary.popular.filter,
               all: dictionary.popular.all,
               choose: dictionary.popular.choose,
               showMore: dictionary.popular.showMore,
@@ -257,7 +258,13 @@ export function HomePage({ locale, dictionary }: Props) {
             })}
           </div>
           <div className="insta__cta">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn-pill">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-pill"
+              aria-label={`${dictionary.instagram.cta} (${dictionary.externalNewTab})`}
+            >
               {dictionary.instagram.cta} ↗
             </a>
           </div>

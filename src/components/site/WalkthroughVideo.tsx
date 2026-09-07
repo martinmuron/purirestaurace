@@ -13,7 +13,6 @@ export function WalkthroughVideo({ title, className }: Props) {
         poster={heroVideo.poster}
         controls
         playsInline
-        muted
         preload="metadata"
         title={title}
       />
