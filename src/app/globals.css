@@ -434,25 +434,15 @@ button {
 
 .hdr__brand {
   display: flex;
-  flex-direction: column;
   align-items: center;
   text-decoration: none;
   line-height: 1;
-  gap: 0.3rem;
 }
 
-.hdr__word {
-  font-family: var(--font-display), Georgia, serif;
-  font-size: 1.75rem;
-  letter-spacing: 0.08em;
-  color: var(--fg);
-}
-
-.hdr__sub {
-  font-size: 0.58rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
+.hdr__logo {
+  height: clamp(2.6rem, 7vw, 3.2rem);
+  width: auto;
+  display: block;
 }
 
 .hdr__burger {
