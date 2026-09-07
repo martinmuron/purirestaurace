@@ -19,7 +19,7 @@ export type MenuSection = {
 };
 
 /**
- * Full Czech trial menu transcribed from /puri-menu-cz.pdf (3 pages).
+ * Full Czech menu transcribed from /puri-menu-cz.pdf (3 pages).
  * The PDF remains the source of truth for prices.
  */
 export const menuSections: MenuSection[] = [
