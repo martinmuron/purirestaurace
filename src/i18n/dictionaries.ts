@@ -303,7 +303,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       accent: "Gruzínská",
       rest: "kuchyně v Praze",
       lead: "Chačapuri z pece, ručně skládané chinkali a šašlik z uhlí. Gruzínský stůl pro celou rodinu ve Stodůlkách.",
-      cta: "Prohlédnout menu",
+      cta: "Menu",
     },
     quote: {
       a1: "Jídlo,",
@@ -437,7 +437,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       accent: "Georgian",
       rest: "cuisine in Prague",
       lead: "Khachapuri from the oven, hand-pinched khinkali and shashlik over coals. A Georgian table for the whole family in Stodůlky.",
-      cta: "View the menu",
+      cta: "Menu",
     },
     quote: {
       a1: "Food,",
@@ -571,7 +571,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       accent: "Грузинская",
       rest: "кухня в Праге",
       lead: "Хачапури из печи, хинкали ручной лепки и шашлык на углях. Грузинский стол для всей семьи в Стодулках.",
-      cta: "Смотреть меню",
+      cta: "Меню",
     },
     quote: {
       a1: "Еда,",
