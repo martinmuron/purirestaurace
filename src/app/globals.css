@@ -599,13 +599,14 @@ button {
   margin-top: clamp(1.5rem, 4vh, 3rem);
   aspect-ratio: 1;
   pointer-events: none;
+  filter: drop-shadow(0 -30px 80px rgba(0, 0, 0, 0.7));
   animation: plate 1.4s 0.2s var(--ease) both;
 }
 
 .hero__plate img {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 -30px 80px rgba(0, 0, 0, 0.7));
+  animation: plate-spin 90s linear infinite;
 }
 
 .hero__spacer {
@@ -666,6 +667,12 @@ button {
   to {
     opacity: 1;
     transform: translate(-50%, 54%);
+  }
+}
+
+@keyframes plate-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
