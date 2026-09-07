@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
@@ -88,10 +89,14 @@ export function SiteHeader({ locale, dictionary }: Props) {
         </div>
 
         <Link href={localePath(locale)} className="hdr__brand" aria-label={dictionary.brand}>
-          <span className="hdr__word" translate="no">
-            PURI
-          </span>
-          <span className="hdr__sub">{dictionary.tagline}</span>
+          <Image
+            src="/logo-light.png"
+            alt=""
+            width={700}
+            height={560}
+            className="hdr__logo"
+            priority
+          />
         </Link>
 
         <div className="hdr__right">
