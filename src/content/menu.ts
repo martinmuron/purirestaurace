@@ -51,6 +51,7 @@ export const menuSections: MenuSection[] = [
       {
         name: { cs: "Houbové chipsy", en: "Mushroom chips", ru: "Грибные чипсы" },
         price: "259 Kč",
+        photo: "mushroom-chips",
       },
       {
         name: { cs: "Výběr gruzínských sýrů", en: "Georgian cheese board", ru: "Ассорти грузинских сыров" },
@@ -80,6 +81,7 @@ export const menuSections: MenuSection[] = [
           ru: "Огурцы, помидоры, лук, зелень и заправка.",
         },
         price: "219 Kč",
+        photo: "salad-tomato",
       },
       {
         name: {
@@ -369,6 +371,7 @@ export const menuSections: MenuSection[] = [
           ru: "Виноградные листья с мясом, рисом, зеленью и специями.",
         },
         price: "279 Kč",
+        photo: "dolma",
       },
       {
         name: { cs: "Zapečený lilek s masem", en: "Baked eggplant with meat", ru: "Запечённый баклажан с мясом" },
@@ -378,6 +381,7 @@ export const menuSections: MenuSection[] = [
           ru: "Баклажан, мясо, томатный соус и сыр.",
         },
         price: "409 Kč",
+        photo: "eggplant-baked",
       },
       {
         name: { cs: "Kebab v omáčce satsebeli", en: "Kebab in satsebeli sauce", ru: "Кебаб в соусе сацебели" },
@@ -429,6 +433,7 @@ export const menuSections: MenuSection[] = [
           ru: "Ассорти овощей, приготовленных на гриле.",
         },
         price: "309 Kč",
+        photo: "grilled-vegetables",
       },
       {
         name: { cs: "Kupaty", en: "Kupaty", ru: "Купаты" },
@@ -438,6 +443,7 @@ export const menuSections: MenuSection[] = [
           ru: "Грузинские купаты со специями на гриле.",
         },
         price: "429 Kč",
+        photo: "kupaty",
       },
       {
         name: { cs: "Grilovaný losos", en: "Grilled salmon", ru: "Лосось на гриле" },
@@ -514,7 +520,7 @@ export const menuSections: MenuSection[] = [
     group: "food",
     title: { cs: "Dezerty", en: "Desserts", ru: "Десерты" },
     items: [
-      { name: { cs: "Napoleon", en: "Napoleon", ru: "Наполеон" }, price: "229 Kč" },
+      { name: { cs: "Napoleon", en: "Napoleon", ru: "Наполеон" }, price: "229 Kč", photo: "napoleon" },
       { name: { cs: "Medovik", en: "Medovik honey cake", ru: "Медовик" }, price: "229 Kč" },
       { name: { cs: "Palačinky", en: "Crêpes", ru: "Блины" }, price: "229 Kč" },
     ],
@@ -526,10 +532,10 @@ export const menuSections: MenuSection[] = [
     items: [
       { name: { cs: "Pomerančový džus", en: "Orange juice", ru: "Апельсиновый сок" }, price: "75 Kč" },
       { name: { cs: "Jablečný džus", en: "Apple juice", ru: "Яблочный сок" }, price: "75 Kč" },
-      { name: { cs: "Domácí limonáda", en: "Homemade lemonade", ru: "Домашний лимонад" }, price: "185 Kč" },
+      { name: { cs: "Domácí limonáda", en: "Homemade lemonade", ru: "Домашний лимонад" }, price: "185 Kč", photo: "lemonade" },
       { name: { cs: "Borjomi", en: "Borjomi", ru: "Боржоми" }, price: "85 Kč" },
       { name: { cs: "Kompot", en: "Kompot", ru: "Компот" }, price: "190 Kč" },
-      { name: { cs: "Gruzínská limonáda", en: "Georgian lemonade", ru: "Грузинский лимонад" }, price: "105 Kč" },
+      { name: { cs: "Gruzínská limonáda", en: "Georgian lemonade", ru: "Грузинский лимонад" }, price: "105 Kč", photo: "georgian-lemonade" },
       { name: { cs: "Coca-Cola", en: "Coca-Cola", ru: "Coca-Cola" }, price: "85 Kč" },
       { name: { cs: "Fanta", en: "Fanta", ru: "Fanta" }, price: "85 Kč" },
       { name: { cs: "Sprite", en: "Sprite", ru: "Sprite" }, price: "85 Kč" },
