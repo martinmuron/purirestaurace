@@ -9,7 +9,6 @@ export type CarouselItem = {
   width: number;
   height: number;
   alt: string;
-  caption?: string;
 };
 
 type Props = {
@@ -69,7 +68,6 @@ export function Carousel({ items, labels }: Props) {
                   loading="lazy"
                 />
               </div>
-              {item.caption ? <figcaption>{item.caption}</figcaption> : null}
             </figure>
           </div>
         ))}

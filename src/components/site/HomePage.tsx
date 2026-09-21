@@ -51,7 +51,7 @@ export function HomePage({ locale, dictionary }: Props) {
     .map((section) => ({ id: section.id, label: section.title[locale] }));
 
   const galleryItems = [
-    ...photos.slice(0, 8).map((p) => ({ ...p, alt: alt(p.id), caption: alt(p.id) })),
+    ...photos.slice(0, 8).map((p) => ({ ...p, alt: alt(p.id) })),
   ];
 
   const quotePillA = getPhoto("khinkali-hands");

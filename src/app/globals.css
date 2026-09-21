@@ -1116,12 +1116,6 @@ button {
   object-fit: cover;
 }
 
-.carousel__item figcaption {
-  margin-top: 0.85rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
 .carousel__foot {
   display: flex;
   align-items: center;
