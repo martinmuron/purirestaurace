@@ -374,22 +374,6 @@ button {
   cursor: default;
 }
 
-/* ---------- Notice ---------- */
-.notice {
-  background: var(--gold);
-  color: var(--ink);
-  padding: 0.65rem var(--gutter);
-  text-align: center;
-}
-
-.notice__text {
-  max-width: var(--wrap);
-  margin: 0 auto;
-  font-size: 0.95rem;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
 /* ---------- Header ---------- */
 .hdr {
   position: sticky;
