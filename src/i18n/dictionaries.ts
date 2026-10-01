@@ -80,7 +80,7 @@ export type Dictionary = {
     lead: string;
     questions: string;
     hoursTitle: string;
-    hoursBody: string;
+    hoursLines: string[];
     hoursNote: string;
     locationTitle: string;
     addressTitle: string;
@@ -468,7 +468,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       lead: "Najdete nás na Šostakovičově náměstí v Praze 5 – Stodůlkách.",
       questions: "Pro dotazy",
       hoursTitle: "Otevírací doba",
-      hoursBody: "Aktuální otevírací dobu sledujte na sociálních sítích.",
+      hoursLines: ["Každý den: 15:00–22:00"],
       hoursNote: "Rezervace přijímáme e-mailem.",
       locationTitle: "Kde nás najdete",
       addressTitle: "Adresa",
@@ -602,7 +602,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       lead: "Find us on Šostakovičovo náměstí in Prague 5 – Stodůlky.",
       questions: "For any questions",
       hoursTitle: "Working hours",
-      hoursBody: "Follow our social channels for current opening hours.",
+      hoursLines: ["Daily: 3 pm – 10 pm"],
       hoursNote: "Reservations by email.",
       locationTitle: "Our location",
       addressTitle: "Address",
@@ -736,7 +736,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       lead: "Мы на площади Шостаковича в Праге 5 – Стодулки.",
       questions: "По любым вопросам",
       hoursTitle: "Часы работы",
-      hoursBody: "Актуальные часы смотрите в соцсетях.",
+      hoursLines: ["Ежедневно: 15:00–22:00"],
       hoursNote: "Бронирование по электронной почте.",
       locationTitle: "Как нас найти",
       addressTitle: "Адрес",

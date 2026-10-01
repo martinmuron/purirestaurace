@@ -68,7 +68,7 @@ export function ContactBlock({ dictionary, showMap = true, headingLevel = 3 }: P
                 rel="noopener noreferrer"
                 aria-label={`Instagram (${dictionary.externalNewTab})`}
               >
-                @purirestaurace
+                @puri.restaurace
               </a>
             </span>
             <span>
@@ -90,7 +90,9 @@ export function ContactBlock({ dictionary, showMap = true, headingLevel = 3 }: P
             {c.hoursTitle}
           </H>
           <div className="ccol__body">
-            <span>{c.hoursBody}</span>
+            {c.hoursLines.map((line) => (
+              <span key={line}>{line}</span>
+            ))}
             <span>{c.hoursNote}</span>
           </div>
         </div>
