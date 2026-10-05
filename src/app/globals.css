@@ -1234,11 +1234,6 @@ button {
   color-scheme: normal;
 }
 
-.reservation__note {
-  margin: 0 0 2rem;
-  color: var(--fg-soft);
-}
-
 .reservation__help {
   margin-top: 2rem;
   padding-top: 1.5rem;
