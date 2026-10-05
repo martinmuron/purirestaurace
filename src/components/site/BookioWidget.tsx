@@ -32,7 +32,7 @@ export function BookioWidget({ locale, title }: Props) {
     };
     window.addEventListener("message", onMessage);
 
-    // Use the current website's stylesheet in local development and preview deployments too.
+    // Wait for the current origin before loading Bookio, so hydration never restarts the form.
     const src = getBookioUrl(locale, new URL("/bookio.css", window.location.origin).href);
     if (iframe.src !== src) iframe.src = src;
 
@@ -42,7 +42,6 @@ export function BookioWidget({ locale, title }: Props) {
   return (
     <iframe
       ref={iframeRef}
-      src={getBookioUrl(locale)}
       title={title}
       className="reservation__frame"
       referrerPolicy="strict-origin-when-cross-origin"
