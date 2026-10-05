@@ -36,6 +36,7 @@ export function SiteFooter({ locale, dictionary }: Props) {
             <Link href={localePath(locale)}>{dictionary.nav.home}</Link>
             <Link href={localePath(locale, "menu")}>{dictionary.nav.menu}</Link>
             <Link href={localePath(locale, "gallery")}>{dictionary.nav.gallery}</Link>
+            <Link href={localePath(locale, "rezervace")}>{dictionary.nav.reservation}</Link>
             <Link href={localePath(locale, "contact")}>{dictionary.nav.contact}</Link>
           </div>
           <div className="ftr__col">

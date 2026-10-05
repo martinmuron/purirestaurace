@@ -1,4 +1,6 @@
-import type { Dictionary } from "@/i18n/dictionaries";
+import Link from "next/link";
+import type { Locale } from "@/i18n/config";
+import { localePath, type Dictionary } from "@/i18n/dictionaries";
 import {
   ADDRESS_LINES,
   EMAIL,
@@ -8,6 +10,7 @@ import {
 } from "@/content/site";
 
 type Props = {
+  locale: Locale;
   dictionary: Dictionary;
   showMap?: boolean;
   /** Heading level for the contact columns: h3 under a section h2, h2 directly under the page h1. */
@@ -45,7 +48,7 @@ function IconPin() {
   );
 }
 
-export function ContactBlock({ dictionary, showMap = true, headingLevel = 3 }: Props) {
+export function ContactBlock({ locale, dictionary, showMap = true, headingLevel = 3 }: Props) {
   const c = dictionary.contact;
   const H = headingLevel === 2 ? "h2" : "h3";
   return (
@@ -93,7 +96,7 @@ export function ContactBlock({ dictionary, showMap = true, headingLevel = 3 }: P
             {c.hoursLines.map((line) => (
               <span key={line}>{line}</span>
             ))}
-            <span>{c.hoursNote}</span>
+            <Link href={localePath(locale, "rezervace")}>{c.hoursNote}</Link>
           </div>
         </div>
         <div className="ccol">
