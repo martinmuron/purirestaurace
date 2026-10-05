@@ -327,7 +327,7 @@ export function HomePage({ locale, dictionary }: Props) {
               {dictionary.contact.title}
             </h2>
           </div>
-          <ContactBlock dictionary={dictionary} />
+          <ContactBlock locale={locale} dictionary={dictionary} />
         </div>
       </section>
     </>

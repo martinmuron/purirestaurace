@@ -1,0 +1,150 @@
+/* PURI's Bookio form. Colors match src/app/globals.css. */
+@font-face {
+  font-family: "PURI Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("./fonts/manrope-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "PURI Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("./fonts/manrope-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+html { color-scheme: dark; }
+body, .np-body-bg { background: #0e0e0e; color: #f4f1ec; }
+body, .np-widget, #header h1, input, textarea, button, select { font-family: "PURI Manrope", Arial, sans-serif; }
+.np-widget { width: 100%; margin: 0; }
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: auto;
+  min-height: 4.5rem;
+  padding: 0 0 1rem;
+  background: #0e0e0e;
+  color: #f4f1ec;
+  border-bottom: 1px solid #ffffff24;
+}
+#header .np-logo {
+  display: block;
+  flex: none;
+  width: 3.5rem;
+  height: 3rem;
+  margin: 0;
+  background: url("./logo-light.png") center / contain no-repeat;
+}
+#header h1 { float: none; margin: 0; font-size: 0.9rem; line-height: 1.6; }
+.np-body { padding: 1.5rem 0; }
+
+#inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  height: auto;
+  padding: 0 0 1.5rem;
+}
+#inputs > li { float: none; width: auto; min-width: 0; }
+#inputs label { font-size: 0.85rem; font-weight: 500; padding: 0 0 0.65rem; }
+#inputs .np-filed, #inputs .selectWrapper {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid #ffffff40;
+  border-radius: 0;
+}
+#inputs .np-filed { min-height: 3.25rem; font-weight: 500; }
+#inputs .selectWrapper { padding: 0; min-height: 3.25rem; }
+#inputs .np-select {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 3.125rem;
+  height: auto;
+  padding: 0.85rem 0.9rem;
+  font-size: 1rem;
+}
+.np-filed, .selectWrapper, .selectOptions, .ui-datepicker,
+.np-select:active, .np-select.active, .np-input { background: #151515; }
+.np-select, .np-filed, .selectOptions li, .ui-datepicker th,
+.ui-datepicker-prev span, .ui-datepicker-next span, .ui-datepicker tbody td a,
+.np-body p, .np-link, .np-options a, p a.np-link, .np-checkbox-wrapp a,
+.np-input-wrapp input, .np-input-wrapp textarea { color: #f4f1ec; }
+.np-select { font-weight: 500; }
+.selectOptions { border: 1px solid #ffffff40; border-radius: 0; }
+.selectOptions li { padding: 0.8rem; border-bottom-color: #ffffff24; }
+.selectOptions li:hover, .selectOptions li:active,
+.ui-datepicker-calendar .ui-state-active { background: #e2a54b; color: #121212; }
+
+.np-button, .np-button-inline {
+  height: auto;
+  min-height: 3rem;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid #e2a54b;
+  border-radius: 0;
+  background: #e2a54b;
+  color: #121212;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+.np-button:hover, .np-button-inline:hover { background: #f4f1ec; border-color: #f4f1ec; color: #121212; }
+.np-label-box { background: #e2a54b; color: #121212; }
+.np-label-box .np-triangle { border-top-color: #e2a54b; }
+.np-body form .np-input { font-size: 1rem; font-weight: 400; padding: 0.9rem 0; }
+.np-input-wrapp { border-bottom: 1px solid #ffffff40; }
+.np-input::placeholder { color: #f4f1ec99; opacity: 1; font-weight: 400; }
+.np-body form .np-input.np-textarea { min-height: 5rem; }
+.intl-tel-input { width: 100%; }
+.np-body form #int-tel-input { box-sizing: border-box; padding-left: 3.25rem; }
+.np-body p a { color: #f4f1ec; text-underline-offset: 0.2em; }
+.np-body p a:hover { color: #e2a54b; }
+.np-alternatives li { border-color: #ffffff40; color: #f4f1ec; }
+.np-alternatives li:hover { background: #e2a54b; color: #121212; }
+.np-disabled, .np-disabled .np-input,
+.np-alternatives .np-disabled, .np-alternatives .np-disabled:hover { color: #999 !important; border-color: #555 !important; }
+.np-link:hover, .np-options a:hover, .np-checkbox-wrapp a:hover, .widget-link { color: #e2a54b; }
+.ui-datepicker { border: 1px solid #ffffff40; border-radius: 0; padding: 0.5rem; }
+.ui-datepicker-header, .ui-datepicker-title { color: #e2a54b; }
+.ui-datepicker tbody td a { border-bottom-color: #151515 !important; }
+.ui-datepicker-unselectable span { color: #777 !important; }
+.ui-datepicker-today a { background: #1d1d1d; }
+.ui-datepicker-today .ui-state-active { background: #e2a54b; color: #121212; }
+.intl-tel-input .country-list { background: #151515; color: #f4f1ec; border-color: #ffffff40; }
+.intl-tel-input .country-list .country.highlight { background: #1d1d1d; }
+.np-errors { color: #ffc5b8; }
+.np-errors a { color: inherit; }
+input[type="checkbox"] { accent-color: #e2a54b; }
+:focus-visible { outline: 2px solid #e2a54b; outline-offset: 3px; }
+
+.cky-consent-container .cky-consent-bar {
+  background: #151515 !important;
+  color: #f4f1ec !important;
+  border-color: #ffffff40 !important;
+}
+.cky-consent-container .cky-title,
+.cky-consent-container .cky-notice-des { color: #f4f1ec !important; }
+.cky-consent-container .cky-btn {
+  border-color: #e2a54b !important;
+  border-radius: 0;
+  color: #e2a54b !important;
+  font-family: "PURI Manrope", Arial, sans-serif;
+}
+.cky-consent-container .cky-btn-accept { background: #e2a54b !important; color: #121212 !important; }
+
+@media (min-width: 720px) {
+  #inputs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 400px) {
+  #inputs { grid-template-columns: 1fr; }
+}

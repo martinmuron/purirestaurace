@@ -1,6 +1,6 @@
 import type { Locale } from "./config";
 
-export const siteRoutes = ["", "menu", "gallery", "contact"] as const;
+export const siteRoutes = ["", "menu", "gallery", "contact", "rezervace"] as const;
 export type SiteRoute = (typeof siteRoutes)[number];
 
 export function localePath(locale: Locale, route: SiteRoute = ""): string {
@@ -21,6 +21,7 @@ export type Dictionary = {
     menu: string;
     gallery: string;
     contact: string;
+    reservation: string;
     openMenu: string;
     closeMenu: string;
   };
@@ -92,6 +93,14 @@ export type Dictionary = {
     companySeat: string;
     mapAction: string;
     mapTitle: string;
+  };
+  reservation: {
+    title: string;
+    lead: string;
+    formTitle: string;
+    openForm: string;
+    help: string;
+    languageNote: string;
   };
   menu: {
     title: string;
@@ -389,6 +398,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       menu: "Menu",
       gallery: "Galerie",
       contact: "Kontakt",
+      reservation: "Rezervace",
       openMenu: "Otevřít navigaci",
       closeMenu: "Zavřít navigaci",
     },
@@ -469,7 +479,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       questions: "Pro dotazy",
       hoursTitle: "Otevírací doba",
       hoursLines: ["Každý den: 15:00–22:00"],
-      hoursNote: "Rezervace přijímáme e-mailem.",
+      hoursNote: "Rezervujte si stůl online.",
       locationTitle: "Kde nás najdete",
       addressTitle: "Adresa",
       emailTitle: "E-mail",
@@ -480,6 +490,14 @@ const dictionaries: Record<Locale, Dictionary> = {
       companySeat: "Renoirova 652, Praha 5 – Stodůlky",
       mapAction: "Otevřít v Mapách",
       mapTitle: "Mapa s polohou restaurace PURI",
+    },
+    reservation: {
+      title: "Rezervace",
+      lead: "Rezervujte si stůl v PURI. Vyberte datum, čas a počet hostů.",
+      formTitle: "Rezervační formulář restaurace PURI",
+      openForm: "Otevřít rezervaci v novém okně",
+      help: "Pro větší skupiny nebo zvláštní přání nám napište na",
+      languageNote: "",
     },
     menu: {
       title: "Menu",
@@ -523,6 +541,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       menu: "Menu",
       gallery: "Gallery",
       contact: "Contact",
+      reservation: "Reservations",
       openMenu: "Open navigation",
       closeMenu: "Close navigation",
     },
@@ -603,7 +622,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       questions: "For any questions",
       hoursTitle: "Working hours",
       hoursLines: ["Daily: 3 pm – 10 pm"],
-      hoursNote: "Reservations by email.",
+      hoursNote: "Book your table online.",
       locationTitle: "Our location",
       addressTitle: "Address",
       emailTitle: "Email",
@@ -614,6 +633,14 @@ const dictionaries: Record<Locale, Dictionary> = {
       companySeat: "Renoirova 652, Prague 5 – Stodůlky",
       mapAction: "Open in Maps",
       mapTitle: "Map showing the location of restaurant PURI",
+    },
+    reservation: {
+      title: "Reservations",
+      lead: "Book your table at PURI. Choose a date, time and number of guests.",
+      formTitle: "PURI restaurant reservation form",
+      openForm: "Open reservations in a new tab",
+      help: "For larger groups or special requests, email us at",
+      languageNote: "",
     },
     menu: {
       title: "Menu",
@@ -657,6 +684,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       menu: "Меню",
       gallery: "Галерея",
       contact: "Контакты",
+      reservation: "Бронирование",
       openMenu: "Открыть навигацию",
       closeMenu: "Закрыть навигацию",
     },
@@ -737,7 +765,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       questions: "По любым вопросам",
       hoursTitle: "Часы работы",
       hoursLines: ["Ежедневно: 15:00–22:00"],
-      hoursNote: "Бронирование по электронной почте.",
+      hoursNote: "Забронируйте столик онлайн.",
       locationTitle: "Как нас найти",
       addressTitle: "Адрес",
       emailTitle: "Эл. почта",
@@ -748,6 +776,14 @@ const dictionaries: Record<Locale, Dictionary> = {
       companySeat: "Renoirova 652, Прага 5 – Стодулки",
       mapAction: "Открыть в Картах",
       mapTitle: "Карта с расположением ресторана PURI",
+    },
+    reservation: {
+      title: "Бронирование",
+      lead: "Забронируйте столик в PURI. Выберите дату, время и количество гостей.",
+      formTitle: "Форма бронирования столика в ресторане PURI",
+      openForm: "Открыть бронирование в новой вкладке",
+      help: "Для больших компаний или особых пожеланий напишите нам на",
+      languageNote: "Форма бронирования доступна на английском языке.",
     },
     menu: {
       title: "Меню",

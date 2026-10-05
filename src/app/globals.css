@@ -432,6 +432,10 @@ button {
   color: var(--fg);
 }
 
+.hdr__link--reservation {
+  color: var(--gold);
+}
+
 .hdr__brand {
   display: flex;
   align-items: center;
@@ -1214,6 +1218,42 @@ button {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
+}
+
+/* ---------- Reservations ---------- */
+.reservation {
+  max-width: 64rem;
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.reservation__frame {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: var(--bg);
+  color-scheme: normal;
+}
+
+.reservation__note {
+  margin: 0 0 2rem;
+  color: var(--fg-soft);
+}
+
+.reservation__help {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.88rem;
+  color: var(--fg-soft);
+}
+
+.reservation__help p {
+  margin: 1rem 0 0;
+}
+
+.reservation__help p a {
+  color: var(--fg);
+  text-underline-offset: 0.2em;
 }
 
 /* ---------- Footer ---------- */

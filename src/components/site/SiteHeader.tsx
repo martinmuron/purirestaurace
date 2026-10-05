@@ -18,6 +18,7 @@ const links: { route: SiteRoute; key: keyof Dictionary["nav"] }[] = [
   { route: "", key: "home" },
   { route: "menu", key: "menu" },
   { route: "gallery", key: "gallery" },
+  { route: "rezervace", key: "reservation" },
   { route: "contact", key: "contact" },
 ];
 
@@ -75,11 +76,11 @@ export function SiteHeader({ locale, dictionary }: Props) {
             <span aria-hidden="true" />
           </button>
           <nav className="hdr__nav" aria-label={dictionary.navAria}>
-            {links.slice(1, 3).map(({ route, key }) => (
+            {links.slice(1, 4).map(({ route, key }) => (
               <Link
                 key={route}
                 href={localePath(locale, route)}
-                className={isActive(route) ? "hdr__link is-active" : "hdr__link"}
+                className={`${isActive(route) ? "hdr__link is-active" : "hdr__link"}${route === "rezervace" ? " hdr__link--reservation" : ""}`}
                 aria-current={isActive(route) ? "page" : undefined}
               >
                 {dictionary.nav[key]}
